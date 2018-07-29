@@ -6,7 +6,7 @@ from django.db import models
 # 班级类
 class Grades(models.Model):
     # 班级名称
-    gName = models.CharField(max_length=20)
+    gName = models.CharField(max_length=20, unique=True)
     # 创建时间
     gDate = models.DateTimeField()
     # 总人数
@@ -20,6 +20,10 @@ class Grades(models.Model):
 
     def __str__(self):
         return self.gName
+
+    class Meta:
+        db_table = "grades"
+        ordering = ["id"]
 
 
 # 学生类
@@ -39,3 +43,9 @@ class Students(models.Model):
 
     def __str__(self):
         return self.sName
+
+    class Meta:
+        # 定义表名
+        db_table = "students"
+        # 排序状态 -表示降序
+        ordering = ["id"]

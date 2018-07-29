@@ -26,8 +26,20 @@ class Grades(models.Model):
         ordering = ["id"]
 
 
+# 自定义查询集类
+class StudentsManager(models.Manager):
+
+    def get_queryset(self):
+        return super(StudentsManager, self).get_queryset().filter(sIsDelete=False)
+
+
 # 学生类
 class Students(models.Model):
+    # 原始查询集
+    objects = models.Manager()
+    # 自定义查询集,会覆盖系统自定义的查询集合
+    stuObj = StudentsManager()
+
     # 学生名字
     sName = models.CharField(max_length=20)
     # 性别
@@ -43,6 +55,12 @@ class Students(models.Model):
 
     def __str__(self):
         return self.sName
+
+    # 类方法，创建对象
+    @classmethod
+    def createStudent(cls, name, age, gender, content, grade):
+        student = cls(sName=name, sAge=age, sGender=gender, sContend=content, sGrade=grade)
+        return student
 
     class Meta:
         # 定义表名

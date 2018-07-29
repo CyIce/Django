@@ -28,7 +28,8 @@ def grades(request):
     # gradesList = Grades.objects.filter(Q(pk=3) | Q(pk=2))
 
     # 关联查询Grades表和Students表，在查询学生表中学生名字含有'李白'的学生的班级
-    gradesList = Grades.objects.filter(students__sContend__contains="李白")
+    # gradesList = Grades.objects.filter(students__sContend__contains="李白")
+
 
     # 将数据传递给模版
     return render(request, 'myApp/grades.html', {"grades": gradesList})

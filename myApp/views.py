@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Grades, Students
 from django.db.models import Max
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -29,7 +32,6 @@ def grades(request):
 
     # 关联查询Grades表和Students表，在查询学生表中学生名字含有'李白'的学生的班级
     # gradesList = Grades.objects.filter(students__sContend__contains="李白")
-
 
     # 将数据传递给模版
     return render(request, 'myApp/grades.html', {"grades": gradesList})
@@ -61,7 +63,6 @@ def studentInfo(request):
     # maxAge=Students.objects.aggregate(Max("sAge"))
     # print(maxAge)
 
-
     return render(request, "myApp/students.html", {"students": infoList})
 
 
@@ -70,3 +71,92 @@ def addstudent(request):
     student = Students.createStudent("李贺", 71, True, "我是李贺哈哈哈", grade)
     student.save()
     return HttpResponse("创建成功")
+
+
+def attribute(request):
+    print(request.path)
+    print(request.method)
+    print(request.encoding)
+    print(request.GET)
+    print(request.POST)
+    print(request.FILES)
+    print(request.COOKIES)
+    print(request.session)
+    return HttpResponse("attribute")
+
+
+# 获取get传递的数据，一个键带一个值
+def get1(request):
+    a = request.GET.get("a")
+    b = request.GET.get("b")
+    c = request.GET.get("c")
+
+    return HttpResponse(a + "   " + b + "   " + c)
+
+
+# 获取get传递的数据，一个键带多个值
+def get2(request):
+    a = request.GET.getlist("a")
+    a1 = a[0]
+    a2 = a[1]
+    c = request.GET.get("c")
+    return HttpResponse(a1 + "  " + a2 + "  " + c)
+
+
+# POST
+def registerpage(request):
+    return render(request, "myApp/register.html")
+
+
+def register(request):
+    name = request.POST.get("name")
+    gender = request.POST.get("gender")
+    age = request.POST.get("age")
+    hobby = request.POST.getlist("hobby")
+    hobby0 = hobby[0]
+    # hobby1=hobby[1]
+    return HttpResponse(hobby0)
+
+
+# Cookie的使用
+def cookie(request):
+    res = HttpResponse()
+    ck = request.COOKIES
+    res.write("<h1>" + ck["cyice"] + "</h1>")
+    res.set_cookie("cyice", "good")
+
+    return res
+
+
+# 重定向
+def redirect1(request):
+    return redirect("/cyice/redirect2/")
+
+
+def redirect2(request):
+    return HttpResponse("我是重定向后的网页")
+
+
+# 登录
+def main(request):
+    username = request.session.get("username", "游客")
+
+    return render(request, "myApp/main.html", {"username": username})
+
+
+def login(request):
+    return render(request, "myApp/login.html")
+
+
+def quit(request):
+    logout(request)
+    return redirect("/cyice/main/")
+
+
+def showmain(request):
+    username = request.POST.get("username")
+    # 储存session
+    request.session["username"] = username
+    # 设置有效时间，单位为秒，0表示关闭浏览器时失效，none表示永不过期
+    request.session.set_expiry(10)
+    return redirect("/cyice/main/")

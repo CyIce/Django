@@ -2,6 +2,9 @@
   <dictionary name="cyice">
     <words>
       <w>addstudent</w>
+      <w>registerpage</w>
+      <w>showmain</w>
+      <w>showregister</w>
     </words>
   </dictionary>
 </component>

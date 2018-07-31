@@ -10,9 +10,26 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('<int:num1>/<int:num2>', views.detail),
-    path('grades', views.grades),
-    path('grades/<int:num>', views.students),
-    path('students', views.studentInfo),
-    path('addstudent',views.addstudent)
+    path('<int:num1>/<int:num2>/', views.detail),
+    path('grades/', views.grades),
+    path('grades/<int:num>/', views.students),
+    path('student/', views.studentInfo),
+    path('addstudent/', views.addstudent),
+    path('attribute/', views.attribute),
+    path('get1/', views.get1),
+    path('get2/', views.get2),
+    path('register/', views.registerpage),
+    path('register/reg/', views.register),
+    path('cookie/', views.cookie),
+
+    # 重定向
+    path("redirect1/", views.redirect1),
+    path("redirect2/", views.redirect2),
+
+    # 登录
+    path("main/", views.main),
+    path("login/", views.login),
+    path("showmain/", views.showmain),
+    path("logout/", views.quit),
+
 ]

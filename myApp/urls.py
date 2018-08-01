@@ -38,5 +38,8 @@ urlpatterns = [
     path("good/", views.good, name="good"),
 
     # 模版继承
-    path("base/",views.base)
+    path("base/", views.base),
+
+    path("postfile/", views.postfile),
+    path("showinfo/", views.showinfo),
 ]

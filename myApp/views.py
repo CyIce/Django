@@ -170,4 +170,15 @@ def good(request):
 
 # 模版继承
 def base(request):
-    return render(request,"myApp/testbase.html")
+    return render(request, "myApp/testbase.html")
+
+
+def postfile(request):
+    return render(request, "myApp/postfile.html")
+
+
+def showinfo(request):
+    username = request.POST.get("username")
+    password = request.POST.get("password")
+
+    return render(request, "myApp/showinfo.html", {"username": username, "password": password})

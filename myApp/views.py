@@ -6,11 +6,12 @@ from django.db.models import Max
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.contrib.auth import logout
+from django.urls import reverse
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse("我是主页")
+    return render(request,"myApp/index.html")
 
 
 def detail(request, num1, num2):
@@ -21,6 +22,7 @@ from django.db.models import F, Q
 
 
 def grades(request):
+    url = reverse("myApp:grades")
     # 去模版中取数据
     gradesList = Grades.objects.all()
 
@@ -158,5 +160,10 @@ def showmain(request):
     # 储存session
     request.session["username"] = username
     # 设置有效时间，单位为秒，0表示关闭浏览器时失效，none表示永不过期
-    request.session.set_expiry(10)
+    request.session.set_expiry(1800)
     return redirect("/cyice/main/")
+
+
+# 反向解析
+def good(request):
+    return render(request, "myApp/good.html")

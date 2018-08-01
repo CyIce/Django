@@ -8,8 +8,10 @@
 from django.urls import path
 from . import views
 
+app_name = "myApp"
+
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name="index"),
     path('<int:num1>/<int:num2>/', views.detail),
     path('grades/', views.grades),
     path('grades/<int:num>/', views.students),
@@ -32,4 +34,6 @@ urlpatterns = [
     path("showmain/", views.showmain),
     path("logout/", views.quit),
 
+    # 反向解析
+    path("good/", views.good, name="good")
 ]

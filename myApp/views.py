@@ -6,12 +6,11 @@ from django.db.models import Max
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.contrib.auth import logout
-from django.urls import reverse
 
 
 # Create your views here.
 def index(request):
-    return render(request,"myApp/index.html")
+    return render(request, "myApp/index.html")
 
 
 def detail(request, num1, num2):
@@ -167,3 +166,8 @@ def showmain(request):
 # 反向解析
 def good(request):
     return render(request, "myApp/good.html")
+
+
+# 模版继承
+def base(request):
+    return render(request,"myApp/testbase.html")

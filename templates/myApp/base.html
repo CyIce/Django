@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #header {
+            width: 80%;
+            height: 32px;
+            margin-left: 10%;
+            background-color: aquamarine;
+        }
+
+        #footer {
+            width: 80%;
+            height: 32px;
+            margin-left: 10%;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+
+
+<header id="header">
+    Header
+</header>
+
+{#预留的位置#}
+<div id="main">
+    {% block main %}
+
+    {% endblock %}
+</div>
+
+<footer id="footer">
+    Footer
+</footer>
+
+</body>
+</html>

@@ -35,5 +35,8 @@ urlpatterns = [
     path("logout/", views.quit),
 
     # 反向解析
-    path("good/", views.good, name="good")
+    path("good/", views.good, name="good"),
+
+    # 模版继承
+    path("base/",views.base)
 ]

@@ -6,6 +6,8 @@ from django.db.models import Max
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.contrib.auth import logout
+import os
+from django.conf import settings
 
 
 # Create your views here.
@@ -21,7 +23,6 @@ from django.db.models import F, Q
 
 
 def grades(request):
-    url = reverse("myApp:grades")
     # 去模版中取数据
     gradesList = Grades.objects.all()
 
@@ -182,3 +183,22 @@ def showinfo(request):
     password = request.POST.get("password")
 
     return render(request, "myApp/showinfo.html", {"username": username, "password": password})
+
+
+# 上传文件
+def upload(request):
+    return render(request, "myApp/upload.html")
+
+
+def savefile(request):
+    if request.method == "POST":
+        f = request.FILES["file"]
+        filepath = os.path.join(settings.MDEIA_ROOT, f.name)
+        with open(filepath, "wb") as fp:
+            for info in f.chunks():
+                fp.write(info)
+
+        return HttpResponse("上传成功")
+
+    else:
+        return HttpResponse("上传失败")

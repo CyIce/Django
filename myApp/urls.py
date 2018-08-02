@@ -42,4 +42,7 @@ urlpatterns = [
 
     path("postfile/", views.postfile),
     path("showinfo/", views.showinfo),
+
+    path("upload", views.upload),
+    path("savafile/", views.savefile),
 ]

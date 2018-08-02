@@ -2,7 +2,9 @@
   <dictionary name="cyice">
     <words>
       <w>addstudent</w>
+      <w>filepath</w>
       <w>registerpage</w>
+      <w>savafile</w>
       <w>showmain</w>
       <w>showregister</w>
     </words>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    {% for stu in students %}
+        <li>
+            {{ stu.sName }}---{{ stu.sGrade }}
+        </li>
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for index in students.paginator.page_range %}
+        <li>
+            {% if index == students.number %}
+                {{ index }}
+            {% else %}
+                <a href="/cyice/studentpage/{{ index }}/">{{ index }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>

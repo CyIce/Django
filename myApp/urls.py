@@ -43,6 +43,10 @@ urlpatterns = [
     path("postfile/", views.postfile),
     path("showinfo/", views.showinfo),
 
+    # 上传文件
     path("upload", views.upload),
     path("savafile/", views.savefile),
+
+    # 分页
+    path("studentpage/<int:page>/", views.studentpage)
 ]

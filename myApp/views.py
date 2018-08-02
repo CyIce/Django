@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 import os
 from django.conf import settings
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -202,3 +203,11 @@ def savefile(request):
 
     else:
         return HttpResponse("上传失败")
+
+
+def studentpage(request, page):
+    allstudent = Students.objects.all()
+    paginator = Paginator(allstudent, 3)
+    currentlist = paginator.page(page)
+
+    return render(request, "myApp/studentpage.html", {"students": currentlist})

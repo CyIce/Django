@@ -9,6 +9,7 @@ from django.contrib.auth import logout
 import os
 from django.conf import settings
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -211,3 +212,16 @@ def studentpage(request, page):
     currentlist = paginator.page(page)
 
     return render(request, "myApp/studentpage.html", {"students": currentlist})
+
+
+# Ajax
+def ajax(request):
+    return render(request, "myApp/ajax.html")
+
+
+def getJson(request):
+    s = Students.objects.all()
+    l = []
+    for stu in s:
+        l.append([stu.sName, stu.sAge])
+    return JsonResponse({"data": l})

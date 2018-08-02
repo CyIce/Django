@@ -48,5 +48,9 @@ urlpatterns = [
     path("savafile/", views.savefile),
 
     # 分页
-    path("studentpage/<int:page>/", views.studentpage)
+    path("studentpage/<int:page>/", views.studentpage),
+
+    # Ajax
+    path("ajax/", views.ajax),
+    path("getJson/", views.getJson),
 ]

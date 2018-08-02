@@ -1,13 +1,23 @@
+
+{% load static from staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>我是主页</title>
+    <link rel="stylesheet" href="{% static 'myApp/css/index.css' %}">
+    <script src="{% static 'myApp/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'myApp/js/index.js' %}"></script>
 </head>
 <body>
+<h1>我是主页</h1>
+
 <h1>Index</h1>
 <a href="good/">Good</a>
-<a href="{% url 'myApp:good' %}">Good</a>
+<img src="{% static 'myApp/img/1.jpg' %}" alt="">
+
+
 
 </body>
 </html>

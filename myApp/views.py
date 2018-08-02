@@ -10,6 +10,7 @@ import os
 from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import JsonResponse
+import time
 
 
 # Create your views here.

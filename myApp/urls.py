@@ -56,4 +56,5 @@ urlpatterns = [
 
     # 富文本
     path("edit/", views.edit),
+
 ]

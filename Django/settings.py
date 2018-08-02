@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myApp'
+    'myApp',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,10 @@ STATICFILES_DIRS = [
 
 # 上传文件目录
 MDEIA_ROOT = os.path.join(BASE_DIR, 'static/upload')
+
+# 富文本
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'width': 600,
+    'height': 100,
+}

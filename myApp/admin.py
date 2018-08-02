@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Grades, Students
+from .models import Grades, Students, Text
 
 
 class StudentsInfo(admin.TabularInline):  # TabularInline
@@ -63,4 +63,8 @@ class StudentsAdmin(admin.ModelAdmin):
     list_display = ["pk", "sName", "sAge", gender, "sContend", "sGrade", isDelete]
     list_per_page = 2
 
+
 # admin.site.register(Students, StudentsAdmin)
+
+
+admin.site.register(Text)

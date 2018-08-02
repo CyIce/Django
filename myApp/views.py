@@ -225,3 +225,8 @@ def getJson(request):
     for stu in s:
         l.append([stu.sName, stu.sAge])
     return JsonResponse({"data": l})
+
+
+# 富文本
+def edit(request):
+    return render(request, "myApp/edit.html")

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>富文本</title>
+    {#    引入富文本#}
+    <script src="/static/tiny_mce/tiny_mce.js"></script>
+    <script>
+        tinyMCE.init({
+            "mode": "textareas",
+            "theme": "advanced",
+            "width": 800,
+            "height": 600,
+        })
+    </script>
+</head>
+<body>
+
+<form action="/cyice/save" method="POST">
+    {% csrf_token %}
+    <textarea name="str" cols="30" rows="10">我是富文本</textarea>
+    <input type="submit" value="提交">
+</form>
+
+</body>
+</html>

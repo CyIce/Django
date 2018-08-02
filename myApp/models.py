@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 
 # Create your models here.
@@ -67,3 +68,7 @@ class Students(models.Model):
         db_table = "students"
         # 排序状态 -表示降序
         ordering = ["id"]
+
+
+class Text(models.Model):
+    str = HTMLField()

@@ -53,4 +53,7 @@ urlpatterns = [
     # Ajax
     path("ajax/", views.ajax),
     path("getJson/", views.getJson),
+
+    # 富文本
+    path("edit/", views.edit),
 ]
